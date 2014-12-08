@@ -1,0 +1,49 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit")
+</p>

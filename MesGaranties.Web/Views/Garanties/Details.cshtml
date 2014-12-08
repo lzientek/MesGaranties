@@ -1,0 +1,90 @@
+﻿@model MesGaranties.Core.Models.Garantie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Garantie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModificationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModificationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoTicketDeCaisse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoTicketDeCaisse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoFicherAnnexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoFicherAnnexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Commentaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commentaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinDeGarantie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinDeGarantie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Mail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,82 @@
+﻿@model UserPass
+
+@{
+    ViewBag.Title = "Connexion Inscription";
+}
+<div class="row">
+    @if (!string.IsNullOrEmpty(ViewBag.PageConnectionNeed))
+    {
+        <p class="text-danger" style="margin-top: 10px;">@ViewBag.PageConnectionNeed</p>
+    }
+    <section id="loginForm" class="col-md-6">
+
+        <h2>Inscription</h2>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div>
+                <hr />
+                @Html.ValidationSummary(true,null, new { @class = "text-danger" })
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mail, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name,null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Firstname, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Pass,null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ConfirmationPass, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.ConfirmationPass, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmationPass, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" value="Inscrire" class="btn  " />
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </section>
+
+    <section class="col-md-5">
+
+        <h2>@GeneralRessources.SeConnecter</h2>
+        <hr />
+
+        @Html.Partial("ConnexionFormPartial",new UserConnexion())
+
+    </section>
+
+</div>
