@@ -47,11 +47,9 @@ namespace MesGaranties.WebSite.Controllers
         }
 
         // POST: Garanties/Create
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,PhotoProduit,PhotoTicketDeCaisse,PhotoFicherAnnexe,Commentaire,FinDeGarantie")] Garantie garantie)
+        public ActionResult Create([Bind(Include = "Name,Commentaire,FinDeGarantie")] Garantie garantie)
         {
             garantie.LastModificationDate = DateTime.Now;
             garantie.CreationDate = DateTime.Now;
@@ -63,14 +61,15 @@ namespace MesGaranties.WebSite.Controllers
 
                 try
                 {
-                    garantie.PhotoProduit = UploadFile("PhotoProduit", garantie.Id, new[] { ".jpg", ".png" });
-                    garantie.PhotoTicketDeCaisse = UploadFile("PhotoTicketDeCaisse", garantie.Id, new[] { ".jpg", ".png" });
+                    garantie.PhotoProduit = UploadFile("PhotoProduit", garantie.Id, ".jpg", ".png");
+                    garantie.PhotoTicketDeCaisse = UploadFile("PhotoTicketDeCaisse", garantie.Id, ".jpg", ".png");
                     garantie.PhotoFicherAnnexe = UploadFile("PhotoFicherAnnexe", garantie.Id,
-                        new[] { ".jpg", ".png", ".pdf", ".doc", ".docx" });
+                         ".jpg", ".png", ".pdf", ".doc", ".docx");
                     return RedirectToAction("Index");
                 }
                 catch (BadImageFormatException ex)
                 {
+                    db.Garanties.Remove(garantie);
                     ModelState.AddModelError(ex.FileName, ex.Message);
 
                 }
@@ -95,7 +94,7 @@ namespace MesGaranties.WebSite.Controllers
                 string extension = System.IO.Path.GetExtension(Request.Files[fileName].FileName);
                 if (validExtension.Length != 0 && !validExtension.Contains(extension))
                 {
-                    throw new BadImageFormatException("Extension du fichier non valide.", fileName);
+                    throw new BadImageFormatException(string.Format("Extension du fichier non valide. ({0})", string.Join(", ", validExtension)), fileName);
                 }
                 string path1 = string.Format("{0}/{1}{2}{3}", Server.MapPath("~/UserFiles"), fileName, id, extension);
                 if (System.IO.File.Exists(path1))
@@ -120,24 +119,44 @@ namespace MesGaranties.WebSite.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Mail", garantie.UserId);
             return View(garantie);
         }
 
         // POST: Garanties/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CreationDate,LastModificationDate,Name,PhotoProduit,PhotoTicketDeCaisse,PhotoFicherAnnexe,Commentaire,FinDeGarantie,UserId")] Garantie garantie)
+        public ActionResult Edit([Bind(Include = "Id,Name,Commentaire,FinDeGarantie")] Garantie garantie)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(garantie).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Garantie gar = db.Garanties.Find(garantie.Id);
+                try
+                {
+                    gar.Name = garantie.Name;
+                    gar.Commentaire = garantie.Commentaire;
+                    gar.FinDeGarantie = garantie.FinDeGarantie;
+                    gar.LastModificationDate = DateTime.Now;
+
+                    //si aucune nouvelle photo a été ajouté on modifie pas
+                    var photo = UploadFile("PhotoProduit", garantie.Id, ".jpg", ".png");
+                    if (!string.IsNullOrWhiteSpace(photo)) { gar.PhotoProduit = photo; }
+                    photo = UploadFile("PhotoTicketDeCaisse", garantie.Id, ".jpg", ".png");
+                    if (!string.IsNullOrWhiteSpace(photo)) { gar.PhotoTicketDeCaisse = photo; }
+                    photo = UploadFile("PhotoFicherAnnexe", garantie.Id, ".jpg", ".png", ".pdf", ".doc", ".docx");
+                    if (!string.IsNullOrWhiteSpace(photo)) { gar.PhotoFicherAnnexe = photo; }
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (BadImageFormatException ex)
+                {
+                    ModelState.AddModelError(ex.FileName, ex.Message);
+                }
+                catch (Exception exe)
+                {
+                    ModelState.AddModelError("", exe.Message);
+                }
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Mail", garantie.UserId);
             return View(garantie);
         }
 

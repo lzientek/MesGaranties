@@ -4,78 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Mes garanties</h1>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastModificationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhotoProduit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhotoTicketDeCaisse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhotoFicherAnnexe)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Commentaire)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FinDeGarantie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Mail)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastModificationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhotoProduit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhotoTicketDeCaisse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhotoFicherAnnexe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Commentaire)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FinDeGarantie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Mail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+
+@foreach (var garantie in Model) {
+    @Html.Partial("GarantieSmallPartial",garantie)
 }
 
-</table>

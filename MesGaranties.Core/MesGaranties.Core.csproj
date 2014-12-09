@@ -59,6 +59,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelsExtentions\Garantie.cs" />
     <Compile Include="Models\ModelsExtentions\User\User.cs" />
     <Compile Include="Models\ModelsExtentions\User\UserConnexion.cs" />
     <Compile Include="Models\ModelsExtentions\User\UserPass.cs" />

@@ -358,6 +358,7 @@
     <Content Include="Views\Garanties\Details.cshtml" />
     <Content Include="Views\Garanties\Edit.cshtml" />
     <Content Include="Views\Garanties\Index.cshtml" />
+    <Content Include="Views\Garanties\GarantieSmallPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,6 +380,10 @@
     <ProjectReference Include="..\..\DansTesComs\DansTesComs.Ressources\DansTesComs.Ressources.csproj">
       <Project>{af036a44-4b1f-4fff-81cb-00ced0a9348e}</Project>
       <Name>DansTesComs.Ressources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LucasHelpers\LucasHelpers\LucasHelpers.csproj">
+      <Project>{d776aa80-e6dd-49a9-ae18-2aa557fb521b}</Project>
+      <Name>LucasHelpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\MesGaranties.Core\MesGaranties.Core.csproj">
       <Project>{7c054027-6e3d-40ef-8231-4029023ab530}</Project>
