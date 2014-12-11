@@ -3,7 +3,6 @@
 // par lucas zientek ( lucas )
 
 using System;
-using DansTesComs.WebSite.Filters;
 using WebMatrix.WebData;
 
 namespace MesGaranties.WebSite

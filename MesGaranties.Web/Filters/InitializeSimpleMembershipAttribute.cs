@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Threading;
 using System.Web.Mvc;
 using MesGaranties.Core.Models;
-using WebMatrix.WebData;
 
 namespace DansTesComs.WebSite.Filters
 {

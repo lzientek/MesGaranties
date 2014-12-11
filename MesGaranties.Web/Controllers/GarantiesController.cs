@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DansTesComs.Ressources.CommentaireExterne;
 using DansTesComs.WebSite.Filters;
 using MesGaranties.Core.Models;
 using WebMatrix.WebData;
@@ -16,7 +11,8 @@ namespace MesGaranties.WebSite.Controllers
     [InitializeSimpleMembership]
     public class GarantiesController : Controller
     {
-        private MesGarantiesEntities db = new MesGarantiesEntities();
+        // ReSharper disable once InconsistentNaming
+        private readonly MesGarantiesEntities db = new MesGarantiesEntities();
 
         // GET: Garanties
         public ActionResult Index()
@@ -25,7 +21,7 @@ namespace MesGaranties.WebSite.Controllers
             return View(garanties.ToList());
         }
 
-        // GET: Garanties/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +32,10 @@ namespace MesGaranties.WebSite.Controllers
             if (garantie == null)
             {
                 return HttpNotFound();
+            }
+            if (garantie.UserId != WebSecurity.CurrentUserId)
+            {
+                return new HttpUnauthorizedResult("Bad User");
             }
             return View(garantie);
         }
@@ -119,6 +119,10 @@ namespace MesGaranties.WebSite.Controllers
             {
                 return HttpNotFound();
             }
+            if (garantie.UserId != WebSecurity.CurrentUserId)
+            {
+                return new HttpUnauthorizedResult("Bad User");
+            }
             return View(garantie);
         }
 
@@ -172,6 +176,10 @@ namespace MesGaranties.WebSite.Controllers
             {
                 return HttpNotFound();
             }
+            if (garantie.UserId != WebSecurity.CurrentUserId)
+            {
+                return new HttpUnauthorizedResult("Bad User");
+            }
             return View(garantie);
         }
 
@@ -181,6 +189,10 @@ namespace MesGaranties.WebSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Garantie garantie = db.Garanties.Find(id);
+            if (garantie.UserId != WebSecurity.CurrentUserId)
+            {
+                return new HttpUnauthorizedResult("Bad User");
+            }
             db.Garanties.Remove(garantie);
             db.SaveChanges();
             return RedirectToAction("Index");
