@@ -12,25 +12,13 @@ namespace MesGaranties.Core.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Token
     {
-        public User()
-        {
-            this.Garanties = new HashSet<Garantie>();
-            this.Preniums = new HashSet<Prenium>();
-            this.webpages_Roles = new HashSet<Role>();
-        }
-    
         public int Id { get; set; }
-        public string Mail { get; set; }
-        public string Name { get; set; }
-        public string Firstname { get; set; }
-        public string Langue { get; set; }
+        public string Value { get; set; }
         public System.DateTime CreationDate { get; set; }
+        public System.DateTime ExpirationDate { get; set; }
     
-        public virtual ICollection<Garantie> Garanties { get; set; }
-        public virtual ICollection<Prenium> Preniums { get; set; }
-        public virtual ICollection<Role> webpages_Roles { get; set; }
-        public virtual Token Token { get; set; }
+        public virtual User User { get; set; }
     }
 }
