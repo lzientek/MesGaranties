@@ -120,7 +120,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Helpers\Connexion\Auth.cs" />
     <Compile Include="Helpers\Connexion\AuthConfig.cs" />
+    <Compile Include="Helpers\Connexion\AuthenticateAtribute.cs" />
     <Compile Include="Models\ExtensionsMethod\UsersExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
