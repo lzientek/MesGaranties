@@ -32,26 +32,6 @@ namespace MesGaranties.Api.Controllers
         }
 
         /// <summary>
-        /// get user details by id
-        /// </summary>
-        /// <param name="id">user id</param>
-        /// <returns>user</returns>
-        [Route("Users/{id}")]
-        [HttpGet]
-        [Authorize]
-        [ResponseType(typeof(UserDetailModel))]
-        public IHttpActionResult GetUser(int id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user.ToUserDetailModel());
-        }
-
-        /// <summary>
         /// put user details by id
         /// </summary>
         /// <param name="id">user id</param>
@@ -60,9 +40,10 @@ namespace MesGaranties.Api.Controllers
         [Route("Users/{id}")]
         [HttpPut]
         [Authorize]
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(UserDetailModel))]
         public IHttpActionResult PutUser(int id, User user)
         {
+            return StatusCode(HttpStatusCode.NotImplemented);
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
             if (id != user.Id) { return BadRequest(); }
 
@@ -81,7 +62,19 @@ namespace MesGaranties.Api.Controllers
                 return new ExceptionResult(ex, this);
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        /// <summary>
+        /// get the actual user
+        /// </summary>
+        /// <returns></returns>
+        [Route("Me")]
+        [HttpGet]
+        [Authorize]
+        [ResponseType(typeof(UserDetailModel))]
+        public IHttpActionResult Me()
+        {
+            return Ok(db.Users.Find(WebSecurity.CurrentUserId).ToUserDetailModel());
         }
 
         /// <summary>
@@ -92,26 +85,18 @@ namespace MesGaranties.Api.Controllers
         [Route("Connection")]
         [HttpPost]
         [AllowAnonymous]
-        [ResponseType(typeof(UserDetailModel))]
         public IHttpActionResult Connexion([FromBody]UserConnexionModel user)
         {
             if (user == null)
             {
                 return new StatusCodeResult(HttpStatusCode.NotFound, this);
             }
-            WebSecurity.Login(user.Mail, user.Password);
+            if (WebSecurity.Login(user.Mail, user.Password))
+            {
+                return Ok();
+            }
 
-            try
-            {
-                var us = db.Users.Find(WebSecurity.CurrentUserId);
-                if (us == null)
-                { return new StatusCodeResult(HttpStatusCode.NotFound, this); }
-                return Ok(us.ToUserDetailModel());
-            }
-            catch (Exception ex)
-            {
-                return new ExceptionResult(ex, this);
-            }
+            return StatusCode(HttpStatusCode.BadRequest);
         }
 
         /// <summary>
@@ -124,7 +109,7 @@ namespace MesGaranties.Api.Controllers
         [Authorize]
         public IHttpActionResult DeleteUser(int id)
         {
-            if (WebSecurity.CurrentUserId != id) { return new StatusCodeResult(HttpStatusCode.Forbidden, this); }
+            if (WebSecurity.CurrentUserId != id) { return StatusCode(HttpStatusCode.Forbidden); }
 
             User user = db.Users.Find(id);
             if (user == null)

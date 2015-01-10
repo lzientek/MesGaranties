@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 using MesGaranties.Api.Models.ExtensionsMethod;
+using MesGaranties.Api.Models.Garantie;
 using MesGaranties.Core.Models;
 using WebMatrix.WebData;
 
@@ -14,7 +17,7 @@ namespace MesGaranties.Api.Controllers
     public class GarantiesController : ApiController
     {
         private MesGarantiesEntities db = new MesGarantiesEntities();
-        
+
         /// <summary>
         /// Get garanties from the connected user
         /// </summary>
@@ -38,59 +41,50 @@ namespace MesGaranties.Api.Controllers
         [HttpGet]
         [Route("Garanties/{id}")]
         [Authorize]
-        [ResponseType(typeof(Garantie))]
+        [ResponseType(typeof(GarantieDetailModel))]
         public IHttpActionResult GetGarantie([FromUri]int id)
         {
-            Garantie garantie = db.Garanties.Find(id);
-            if (garantie == null)
+            var garantie = db.Garanties.Find(id);
+            if (garantie == null || garantie.UserId != WebSecurity.CurrentUserId)
             {
                 return NotFound();
             }
 
-            return Ok(garantie);
+            return Ok(garantie.ToGarantieDetailModel());
         }
 
         /// <summary>
-        /// 
+        /// Modify a garantie by his id
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="garantie"></param>
+        /// <param name="id">garantie id</param>
+        /// <param name="garantie">modification</param>
         /// <returns></returns>
         [HttpPut]
         [Route("Garanties/{id}")]
         [Authorize]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutGarantie(int id, Garantie garantie)
+        [ResponseType(typeof(GarantieDetailModel))]
+        public IHttpActionResult PutGarantie(int id, GarantieModifModel garantie)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != garantie.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(garantie).State = EntityState.Modified;
+            var gar = db.Garanties.Find(id);
+            if (gar == null) { return NotFound(); }
 
             try
             {
+                garantie.ModifGarantie(ref gar);
+                gar.LastModificationDate = DateTime.Now;
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
-                if (!GarantieExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return new ExceptionResult(ex,this);
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(gar.ToGarantieDetailModel());
+            
         }
 
         /// <summary>
@@ -101,33 +95,35 @@ namespace MesGaranties.Api.Controllers
         [HttpPost]
         [Route("Garanties")]
         [Authorize]
-        [ResponseType(typeof(Garantie))]
-        public IHttpActionResult PostGarantie(Garantie garantie)
+        [ResponseType(typeof(GarantieDetailModel))]
+        public IHttpActionResult PostGarantie(GarantieCreateModel garantie)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Garanties.Add(garantie);
+            var gar = garantie.ToGarantie();
+            gar.UserId = WebSecurity.CurrentUserId;
+            db.Garanties.Add(gar);
             db.SaveChanges();
 
-            return Created(string.Format("Garanties/{0}", garantie.Id),garantie);
+            return Created(string.Format("Garanties/{0}", gar.Id), gar.ToGarantieDetailModel());
         }
 
         /// <summary>
-        /// 
+        /// delete a garantie by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
         [Route("Garanties/{id}")]
         [Authorize]
-        [ResponseType(typeof(Garantie))]
+        [ResponseType(typeof(void))]
         public IHttpActionResult DeleteGarantie(int id)
         {
             Garantie garantie = db.Garanties.Find(id);
-            if (garantie == null)
+            if (garantie == null || garantie.UserId != WebSecurity.CurrentUserId)
             {
                 return NotFound();
             }
@@ -135,7 +131,7 @@ namespace MesGaranties.Api.Controllers
             db.Garanties.Remove(garantie);
             db.SaveChanges();
 
-            return Ok(garantie);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
@@ -145,11 +141,6 @@ namespace MesGaranties.Api.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool GarantieExists(int id)
-        {
-            return db.Garanties.Count(e => e.Id == id) > 0;
         }
     }
 }

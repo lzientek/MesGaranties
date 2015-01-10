@@ -38,5 +38,24 @@ namespace MesGaranties.Api.Models.ExtensionsMethod
         {
             return garanties.Select(ToGarantieModel);
         }
+
+        internal static void ModifGarantie(this GarantieModifModel garantie, ref Core.Models.Garantie gar)
+        {
+            if (garantie.Name != null) { gar.Name = garantie.Name; }
+            if (garantie.EndDate != null) { gar.FinDeGarantie = garantie.EndDate; }
+            if (garantie.Commentaire != null) { gar.Commentaire = garantie.Commentaire; }
+        }
+
+        internal static Core.Models.Garantie ToGarantie(this GarantieCreateModel garantie)
+        {
+            return new Core.Models.Garantie
+            {
+                Name = garantie.Name,
+                Commentaire = garantie.Commentaire,
+                FinDeGarantie = garantie.EndDate,
+                CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now,
+            };
+        }
     }
 }

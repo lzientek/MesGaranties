@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GarantiesController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\ExtensionsMethod\GarantiesExtensions.cs" />
     <Compile Include="Models\ExtensionsMethod\UsersExtentions.cs" />
@@ -137,6 +138,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Garantie\GarantieDetailModel.cs" />
+    <Compile Include="Models\Garantie\GarantieCreateModel.cs" />
+    <Compile Include="Models\Garantie\GarantieModifModel.cs" />
     <Compile Include="Models\Garantie\GarantieModel.cs" />
     <Compile Include="Helpers\Json\JsonUnixDateConverter.cs" />
     <Compile Include="Models\User\UserConnexionModel.cs" />
