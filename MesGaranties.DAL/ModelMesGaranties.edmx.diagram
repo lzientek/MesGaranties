@@ -12,8 +12,6 @@
         <AssociationConnector Association="MesGarantiesModel.FK_Prenium_ToUsers" />
         <EntityTypeShape EntityType="MesGarantiesModel.Role" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="MesGarantiesModel.webpages_UsersInRoles" />
-        <EntityTypeShape EntityType="MesGarantiesModel.Token" Width="1.5" PointX="3" PointY="8.25" />
-        <AssociationConnector Association="MesGarantiesModel.FK_Token_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -46,9 +46,18 @@
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -115,20 +124,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\Connexion\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GarantiesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Helpers\Connexion\Auth.cs" />
-    <Compile Include="Helpers\Connexion\AuthConfig.cs" />
-    <Compile Include="Helpers\Connexion\AuthenticateAtribute.cs" />
+    <Compile Include="Models\ExtensionsMethod\GarantiesExtensions.cs" />
     <Compile Include="Models\ExtensionsMethod\UsersExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\User\TokenModel.cs" />
+    <Compile Include="Models\Garantie\GarantieDetailModel.cs" />
+    <Compile Include="Models\Garantie\GarantieModel.cs" />
+    <Compile Include="Helpers\Json\JsonUnixDateConverter.cs" />
     <Compile Include="Models\User\UserConnexionModel.cs" />
+    <Compile Include="Models\User\UserDetailModel.cs" />
     <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,6 +170,10 @@
     <ProjectReference Include="..\MesGaranties.DAL\MesGaranties.DAL.csproj">
       <Project>{af61e87d-0761-44f2-b4be-3c51ad7b388e}</Project>
       <Name>MesGaranties.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MesGaranties.Web\MesGaranties.WebSite.csproj">
+      <Project>{5F44CA30-B150-4993-B5EF-8A9334F3A62A}</Project>
+      <Name>MesGaranties.WebSite</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

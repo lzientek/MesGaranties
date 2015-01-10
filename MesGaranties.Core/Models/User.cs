@@ -31,6 +31,5 @@ namespace MesGaranties.Core.Models
         public virtual ICollection<Garantie> Garanties { get; set; }
         public virtual ICollection<Prenium> Preniums { get; set; }
         public virtual ICollection<Role> webpages_Roles { get; set; }
-        public virtual Token Token { get; set; }
     }
 }

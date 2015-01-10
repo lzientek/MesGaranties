@@ -29,6 +29,5 @@ namespace MesGaranties.Core.Models
         public virtual DbSet<Prenium> Preniums { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Token> Tokens { get; set; }
     }
 }

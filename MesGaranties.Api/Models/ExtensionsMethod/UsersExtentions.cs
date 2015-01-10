@@ -20,24 +20,26 @@ namespace MesGaranties.Api.Models.ExtensionsMethod
             };
         }
 
-        internal static IEnumerable<UserModel> ToUserModels(this IEnumerable<Core.Models.User> users)
+        internal static UserDetailModel ToUserDetailModel(this Core.Models.User user)
         {
-            return users.Select(u => ToUserModel(u));
-        }
 
-        #endregion
-
-        #region token
-
-        internal static TokenModel ToTokenModel(this Token token)
-        {
-            return new TokenModel()
+            return new UserDetailModel()
             {
-                Token = token.Value,
-                Expiration = token.ExpirationDate
+                Id = user.Id,
+                Lastname = user.Name,
+                Firstname = user.Firstname,
+                Mail = user.Mail,
+                CreationDate = user.CreationDate
             };
         }
 
+        internal static IEnumerable<UserModel> ToUserModels(this IEnumerable<Core.Models.User> users)
+        {
+            return users.Select(ToUserModel);
+        }
+
         #endregion
+
+
     }
 }

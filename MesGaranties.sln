@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MesGaranties.Core", "MesGar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MesGaranties.DAL", "MesGaranties.DAL\MesGaranties.DAL.csproj", "{AF61E87D-0761-44F2-B4BE-3C51AD7B388E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.WebSite", "MesGaranties.Web\DansTesComs.WebSite.csproj", "{5F44CA30-B150-4993-B5EF-8A9334F3A62A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MesGaranties.WebSite", "MesGaranties.Web\MesGaranties.WebSite.csproj", "{5F44CA30-B150-4993-B5EF-8A9334F3A62A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.Ressources", "..\DansTesComs\DansTesComs.Ressources\DansTesComs.Ressources.csproj", "{AF036A44-4B1F-4FFF-81CB-00CED0A9348E}"
 EndProject

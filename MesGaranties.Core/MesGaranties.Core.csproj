@@ -60,7 +60,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelsExtentions\Garantie.cs" />
-    <Compile Include="Models\ModelsExtentions\Token.cs" />
     <Compile Include="Models\ModelsExtentions\User\User.cs" />
     <Compile Include="Models\ModelsExtentions\User\UserConnexion.cs" />
     <Compile Include="Models\ModelsExtentions\User\UserPass.cs" />
@@ -68,9 +67,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Token.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
