@@ -4,11 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:winPhone="clr-namespace:MesGaranties.WinPhone.Core;assembly=MesGaranties.WinPhone.Core">
+    xmlns:winPhone="clr-namespace:MesGaranties.WinPhone.Core;assembly=MesGaranties.WinPhone.Core"
+    xmlns:converter="clr-namespace:MesGaranties.WinPhone.Converter">
 
     <!--Ressources d'applications-->
     <Application.Resources>
         <winPhone:LocalizedStrings x:Key="LocalizedStrings"/>
+        <converter:NotConverter  x:Key="NotConverter"   />
+        <converter:BoolToVisibilityConverter  x:Key="BoolToVisibility"   />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

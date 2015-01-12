@@ -25,6 +25,7 @@ namespace MesGaranties.WpfClient
         public MainWindow()
         {
             InitializeComponent();
+
             api.Connection("luc@zientek.fr", "r0Qj6Ink");
             api.SendFile(@"C:\Users\lucas\Pictures\580166_598186063559288_2029291777_n.jpg", 13);
         }

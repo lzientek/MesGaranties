@@ -24,7 +24,7 @@ namespace MesGaranties.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Authorize]
-        [Route("Garanties")]
+        [Route("Me/Garanties")]
         [ResponseType(typeof(IEnumerable<Garantie>))]
         public IHttpActionResult GetGarantie()
         {
@@ -93,7 +93,7 @@ namespace MesGaranties.Api.Controllers
         /// <param name="garantie"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Garanties")]
+        [Route("Me/Garanties")]
         [Authorize]
         [ResponseType(typeof(GarantieDetailModel))]
         public IHttpActionResult PostGarantie(GarantieCreateModel garantie)

@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using MesGaranties.WinPhone.Core.ApiConnector.Connectors;
+using MesGaranties.WinPhone.Core.ApiRequest;
 
 namespace MesGaranties.WinPhone.Core.ApiConnector
 {
@@ -23,7 +24,8 @@ namespace MesGaranties.WinPhone.Core.ApiConnector
             _mail = mail;
             _password = password;
             _cookies = new CookieContainer();
-            UsersConnector = new UsersConnector(){CookieContainer = _cookies};
+            RequestGenerator.Cookie = _cookies;
+            UsersConnector = new UsersConnector();
             IsConnected = UsersConnector.Login(_mail, _password);
         }
     }

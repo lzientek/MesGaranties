@@ -12,11 +12,11 @@
     <RootNamespace>MesGaranties.WinPhone.Core</RootNamespace>
     <AssemblyName>MesGaranties.WinPhone.Core</AssemblyName>
     <DefaultLanguage>fr-FR</DefaultLanguage>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile84</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +79,13 @@
     <Compile Include="ApiConnector\ApiConnector.cs" />
     <Compile Include="ApiConnector\Connectors\GarantieConnector.cs" />
     <Compile Include="ApiConnector\Connectors\UsersConnector.cs" />
+    <Compile Include="ApiConnector\Models\Garantie\GarantieCreateModel.cs" />
+    <Compile Include="ApiConnector\Models\Garantie\GarantieDetailModel.cs" />
+    <Compile Include="ApiConnector\Models\Garantie\GarantieModel.cs" />
+    <Compile Include="ApiConnector\Models\Garantie\GarantieModifModel.cs" />
+    <Compile Include="ApiConnector\Models\JsonUnixDateConverter.cs" />
+    <Compile Include="ApiConnector\Models\User\UserDetailModel.cs" />
+    <Compile Include="ApiConnector\Models\User\UserModel.cs" />
     <Compile Include="ApiRequest\RequestGenerator.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,17 +101,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApiConnector\Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TargetPlatform Include="Windows Phone, Version=8.1" />
-    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>

@@ -10,23 +10,7 @@ namespace MesGaranties.WinPhone
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
-
-        /// <summary>
-        /// ViewModel statique utilisé par les vues avec lesquelles établir la liaison.
-        /// </summary>
-        /// <returns>Objet MainViewModel.</returns>
-        public static MainViewModel ViewModel
-        {
-            get
-            {
-                // Différer la création du modèle de vue autant que nécessaire
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
-
-                return viewModel;
-            }
-        }
+        
 
         /// <summary>
         /// Permet d'accéder facilement au frame racine de l'application téléphonique.
@@ -83,10 +67,7 @@ namespace MesGaranties.WinPhone
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Assurez-vous que l'état de l'application est correctement restauré
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+
         }
 
         // Code à exécuter lorsque l'application est désactivée (envoyée à l'arrière-plan)

@@ -62,6 +62,42 @@ namespace MesGaranties.WinPhone.Core.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mes Garanties.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Connexion.
+        /// </summary>
+        public static string Connexion {
+            get {
+                return ResourceManager.GetString("Connexion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à E-mail :.
+        /// </summary>
+        public static string EmailCp {
+            get {
+                return ResourceManager.GetString("EmailCp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mot de passe :.
+        /// </summary>
+        public static string PasswordCp {
+            get {
+                return ResourceManager.GetString("PasswordCp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à fr-FR.
         /// </summary>
         public static string ResourceLanguage {
@@ -76,6 +112,24 @@ namespace MesGaranties.WinPhone.Core.Resources {
         public static string SampleProperty {
             get {
                 return ResourceManager.GetString("SampleProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Se connecter.
+        /// </summary>
+        public static string SeConnecter {
+            get {
+                return ResourceManager.GetString("SeConnecter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à S&apos; inscrire.
+        /// </summary>
+        public static string Sinscrire {
+            get {
+                return ResourceManager.GetString("Sinscrire", resourceCulture);
             }
         }
     }
