@@ -14,10 +14,16 @@ namespace MesGaranties.WinPhone.Core.ApiConnector.Connectors
     {
         public bool Login(string mail, string pass)
         {
-            
-            var result = ApiRequest.RequestGenerator.PostRequest("Connection",
-                 string.Format("{{ \"Mail\":\"{0}\", \"Password\":\"{1}\" }}", mail, pass));
-            return result.Result.IsSuccessStatusCode;
+            try
+            {
+                var result = ApiRequest.RequestGenerator.PostRequest("Connection",
+                    string.Format("{{ \"Mail\":\"{0}\", \"Password\":\"{1}\" }}", mail, pass));
+                return result.Result.IsSuccessStatusCode;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<UserDetailModel> ActualUser()

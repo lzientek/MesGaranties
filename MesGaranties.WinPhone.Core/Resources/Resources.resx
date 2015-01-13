@@ -123,8 +123,20 @@
   <data name="Connexion" xml:space="preserve">
     <value>Connexion</value>
   </data>
+  <data name="Days" xml:space="preserve">
+    <value>Jours</value>
+  </data>
   <data name="EmailCp" xml:space="preserve">
     <value>E-mail :</value>
+  </data>
+  <data name="EnCours" xml:space="preserve">
+    <value>En cours</value>
+  </data>
+  <data name="GarantieEnded" xml:space="preserve">
+    <value>Plus de garantie</value>
+  </data>
+  <data name="LoginFail" xml:space="preserve">
+    <value>Impossible de se connecter. Verifier votre connexion et vos identifiants.s</value>
   </data>
   <data name="PasswordCp" xml:space="preserve">
     <value>Mot de passe :</value>
@@ -140,5 +152,11 @@
   </data>
   <data name="Sinscrire" xml:space="preserve">
     <value>S' inscrire</value>
+  </data>
+  <data name="Termine" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="TtLesGaranties" xml:space="preserve">
+    <value>Vos garanties</value>
   </data>
 </root>

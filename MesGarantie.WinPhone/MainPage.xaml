@@ -69,8 +69,10 @@
 
                 <Button Grid.Row="6" HorizontalAlignment="Center"
                         IsEnabled="{Binding Path=IsConnecting,Converter={StaticResource NotConverter}}"
-			Content="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.SeConnecter}" Margin="137,40.305,136,38.299"/>
-                <HyperlinkButton Grid.Row="7" Content="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.Sinscrire}" />
+			Content="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.SeConnecter}"
+                        Click="SeConnecterButton_OnClick" Margin="137,40.305,136,38.299"/>
+                <HyperlinkButton Grid.Row="7" NavigateUri="Pages/InscriptionPage.xaml"
+                                 Content="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.Sinscrire}" />
             </Grid>
 
 

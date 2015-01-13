@@ -12,6 +12,8 @@
         <winPhone:LocalizedStrings x:Key="LocalizedStrings"/>
         <converter:NotConverter  x:Key="NotConverter"   />
         <converter:BoolToVisibilityConverter  x:Key="BoolToVisibility"   />
+        <converter:DateTimeToDuree x:Key="DateTimeToDuree" />
+        <converter:PathToBitmapConverter x:Key="PathToBitmap" />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

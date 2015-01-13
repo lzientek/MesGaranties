@@ -80,11 +80,47 @@ namespace MesGaranties.WinPhone.Core.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Jours.
+        /// </summary>
+        public static string Days {
+            get {
+                return ResourceManager.GetString("Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à E-mail :.
         /// </summary>
         public static string EmailCp {
             get {
                 return ResourceManager.GetString("EmailCp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à En cours.
+        /// </summary>
+        public static string EnCours {
+            get {
+                return ResourceManager.GetString("EnCours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Plus de garantie.
+        /// </summary>
+        public static string GarantieEnded {
+            get {
+                return ResourceManager.GetString("GarantieEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Impossible de se connecter. Verifier votre connexion et vos identifiants.s.
+        /// </summary>
+        public static string LoginFail {
+            get {
+                return ResourceManager.GetString("LoginFail", resourceCulture);
             }
         }
         
@@ -130,6 +166,24 @@ namespace MesGaranties.WinPhone.Core.Resources {
         public static string Sinscrire {
             get {
                 return ResourceManager.GetString("Sinscrire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Terminé.
+        /// </summary>
+        public static string Termine {
+            get {
+                return ResourceManager.GetString("Termine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vos garanties.
+        /// </summary>
+        public static string TtLesGaranties {
+            get {
+                return ResourceManager.GetString("TtLesGaranties", resourceCulture);
             }
         }
     }

@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using MesGaranties.WinPhone.Core;
+using MesGaranties.WinPhone.Core.ApiConnector;
 using MesGaranties.WinPhone.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -18,6 +20,7 @@ namespace MesGaranties.WinPhone
         /// <returns>Frame racine de l'application téléphonique.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
+        public ApiData ApiData { get; set; }
         /// <summary>
         /// Constructeur pour l'objet Application.
         /// </summary>
@@ -67,7 +70,10 @@ namespace MesGaranties.WinPhone
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Assurez-vous que l'état de l'application est correctement restauré
-
+            if (ApiData == null)
+            {
+                ApiData = new ApiData();
+            }
         }
 
         // Code à exécuter lorsque l'application est désactivée (envoyée à l'arrière-plan)
