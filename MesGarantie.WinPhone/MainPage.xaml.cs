@@ -14,26 +14,24 @@ namespace MesGaranties.WinPhone
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        public ConnectionViewModel ConnectionViewModel { get; set; }
         public MainPage()
         {
             InitializeComponent();
-            ConnectionViewModel = (Application.Current as App).ApiData.ConnectionViewModel;
-            DataContext = ConnectionViewModel;
+            DataContext = App.ApiData.ConnectionViewModel;
             
         }
 
-        private void SeConnecterButton_OnClick(object sender, RoutedEventArgs e)
+        private async void SeConnecterButton_OnClick(object sender, RoutedEventArgs e)
         {
-            ConnectionViewModel.IsConnecting = true;
-            if ((App.Current as App).ApiData.Login())
+            App.ApiData.ConnectionViewModel.IsConnecting = true;
+            if (await App.ApiData.Login())
             {
-                ConnectionViewModel.IsConnecting = false;
+                App.ApiData.ConnectionViewModel.IsConnecting = false;
                 NavigationService.Navigate(new Uri("/Page/GarantiesPage.xaml", UriKind.Relative));
             }
             else
             {
-                ConnectionViewModel.IsConnecting = false;
+                App.ApiData.ConnectionViewModel.IsConnecting = false;
                 MessageBox.Show(Core.Resources.Resources.LoginFail);
             }
         }

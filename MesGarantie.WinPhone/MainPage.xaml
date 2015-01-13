@@ -55,13 +55,13 @@
 			 Text="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.EmailCp}" />
                 <TextBox Grid.Row="2" 
                          IsEnabled="{Binding Path=IsConnecting,Converter={StaticResource NotConverter}}"
-                         Text="{Binding Mail}"/>
+                         Text="{Binding Path=Mail,Mode=TwoWay}"/>
 
                 <TextBlock Grid.Row="3" 
 			Text="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.PasswordCp}" />
                 <PasswordBox Grid.Row="4" Margin="0,0,0,38.695" Grid.RowSpan="2"
                              IsEnabled="{Binding Path=IsConnecting,Converter={StaticResource NotConverter}}"
-                             Password="{Binding Password}"/>
+                             Password="{Binding Path=Password,Mode=TwoWay}"/>
 
                 <ProgressBar Grid.Row="5" Background="Transparent" IsIndeterminate="True"
                              Margin="0,35.305,0,111.695" Grid.RowSpan="2"

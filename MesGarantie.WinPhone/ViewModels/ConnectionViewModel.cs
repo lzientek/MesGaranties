@@ -11,8 +11,8 @@ namespace MesGaranties.WinPhone.ViewModels
 {
     public class ConnectionViewModel : INotifyPropertyChanged
     {
-        private string _mail;
-        private string _password;
+        private string _mail = string.Empty;
+        private string _password = string.Empty;
         private bool _isConnecting;
 
         public string Mail
@@ -20,7 +20,6 @@ namespace MesGaranties.WinPhone.ViewModels
             get { return _mail; }
             set
             {
-                if (value == _mail) return;
                 _mail = value;
                 OnPropertyChanged();
             }
@@ -31,7 +30,6 @@ namespace MesGaranties.WinPhone.ViewModels
             get { return _password; }
             set
             {
-                if (value == _password) return;
                 _password = value;
                 OnPropertyChanged();
             }
@@ -42,7 +40,6 @@ namespace MesGaranties.WinPhone.ViewModels
             get { return _isConnecting; }
             set
             {
-                if (value.Equals(_isConnecting)) return;
                 _isConnecting = value;
                 OnPropertyChanged();
             }

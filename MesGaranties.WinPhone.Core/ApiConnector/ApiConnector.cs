@@ -26,7 +26,12 @@ namespace MesGaranties.WinPhone.Core.ApiConnector
             _cookies = new CookieContainer();
             RequestGenerator.Cookie = _cookies;
             UsersConnector = new UsersConnector();
-            IsConnected = UsersConnector.Login(_mail, _password);
+        }
+
+        public async Task<bool> Login()
+        {
+            IsConnected = await UsersConnector.Login(_mail, _password);
+            return IsConnected;
         }
     }
 }

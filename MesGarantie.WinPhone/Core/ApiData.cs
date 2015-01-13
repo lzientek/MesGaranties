@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Windows.Data.Xml.Dom;
 using MesGaranties.WinPhone.Core.ApiConnector.Models.Garantie;
 using MesGaranties.WinPhone.ViewModels;
 
@@ -59,6 +60,7 @@ namespace MesGaranties.WinPhone.Core
             }
         }
 
+        [XmlIgnore]
         public GarantiesViewModel GarantiesViewModel
         {
             get
@@ -77,47 +79,55 @@ namespace MesGaranties.WinPhone.Core
             set { _garantiesViewModel = value; }
         }
 
-        public bool Login()
+        public async Task<bool> Login()
         {
             Mail = _cvm.Mail;
             Password = _cvm.Password;
-            ApiConnector = new ApiConnector.ApiConnector(Mail, Password);
             Save();
+            ApiConnector = new ApiConnector.ApiConnector(Mail, Password);
+            await ApiConnector.Login();
             return ApiConnector.IsConnected;
         }
 
         public void Save()
         {
             IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
-
-            using (var isoStream = new IsolatedStorageFileStream(savePath, FileMode.CreateNew, isoStore))
+            try
             {
-                using (var writer = new StreamWriter(isoStream))
+                using (var isoStream = new IsolatedStorageFileStream(savePath, FileMode.Create, isoStore))
                 {
-                    var ser = new XmlSerializer(typeof(ApiData));
-                    ser.Serialize(writer, this);
+                    using (var writer = new StreamWriter(isoStream))
+                    {
+                        var ser = new XmlSerializer(typeof (ApiData));
+                        ser.Serialize(writer, this);
+                    }
                 }
             }
+            catch (Exception)
+            {
+                
+            }
         }
-        public ApiData Load()
+        public static ApiData Load()
         {
             IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
-
-            using (var isoStream = new IsolatedStorageFileStream(savePath, FileMode.Open, isoStore))
+            try
             {
-                using (var reader = new StreamReader(isoStream))
+                using (var isoStream = new IsolatedStorageFileStream(savePath, FileMode.Open, isoStore))
                 {
-                    try
+                    using (var reader = new StreamReader(isoStream))
                     {
+
                         var dser = new XmlSerializer(typeof(ApiData));
                         return (ApiData)dser.Deserialize(reader);
-                    }
-                    catch (Exception)
-                    {
-                        return new ApiData();
-                    }
 
+
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                return new ApiData();
             }
         }
 
@@ -138,6 +148,6 @@ namespace MesGaranties.WinPhone.Core
         internal static IEnumerable<GarantieViewModel> ToGarantieViewModels(this IEnumerable<GarantieModel> garantie)
         {
             return garantie.Select(ToGarantieViewModel);
-        } 
+        }
     }
 }

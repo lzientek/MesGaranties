@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +12,9 @@ namespace MesGaranties.WinPhone.Core.ApiRequest
 {
     public class RequestGenerator
     {
-        public const string uri = "http://api.mg.com/";
+        public const string uri = "http://192.168.1.64:8042/";
         public static CookieContainer Cookie { get; set; }
-        
+
         /// <summary>
         /// Post request
         /// </summary>
@@ -22,13 +23,23 @@ namespace MesGaranties.WinPhone.Core.ApiRequest
         /// <returns>result</returns>
         public static async Task<HttpResponseMessage> PostRequest(string url, string body)
         {
-            using (var handler = new HttpClientHandler() { CookieContainer = Cookie, UseCookies = true })
-            using (var client = new HttpClient(handler))
-            using (var content = new StringContent(body, Encoding.UTF8))
+            try
             {
-                var result = await client.PostAsync(string.Format("{0}{1}", uri, url), content);
-                return result;
+                using (var handler = new HttpClientHandler() { CookieContainer = Cookie, UseCookies = true })
+                using (var client = new HttpClient(handler))
+                using (var content = new StringContent(body, Encoding.UTF8, "application/json"))
+                {
+                    client.DefaultRequestHeaders.Date = new DateTimeOffset(DateTime.Now);
+                    var result = await client.PostAsync(string.Format("{0}{1}", uri, url), content);
+                    return result;
+                }
             }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
 
         }
 
@@ -57,7 +68,7 @@ namespace MesGaranties.WinPhone.Core.ApiRequest
         {
             using (var handler = new HttpClientHandler() { CookieContainer = Cookie, UseCookies = true })
             using (var client = new HttpClient(handler))
-            using (var content = new StringContent(body, Encoding.UTF8))
+            using (var content = new StringContent(body, Encoding.UTF8, "application/json"))
             {
                 var result = await client.PutAsync(string.Format("{0}{1}", uri, url), content);
                 return result;
@@ -72,7 +83,7 @@ namespace MesGaranties.WinPhone.Core.ApiRequest
         /// <param name="destFile">name</param>
         /// <param name="fileName">filename</param>
         /// <returns></returns>
-        public static async Task<HttpResponseMessage> PostFile(string url,Stream rdr,string destFile ,string fileName )
+        public static async Task<HttpResponseMessage> PostFile(string url, Stream rdr, string destFile, string fileName)
         {
 
             HttpContent fileStreamContent = new StreamContent(rdr);
@@ -88,7 +99,7 @@ namespace MesGaranties.WinPhone.Core.ApiRequest
             {
                 formData.Add(fileStreamContent, destFile, fileName);
 
-                var response = await client.PostAsync(string.Format("{0}{1}",uri, url), formData);
+                var response = await client.PostAsync(string.Format("{0}{1}", uri, url), formData);
                 return response;
             }
         }

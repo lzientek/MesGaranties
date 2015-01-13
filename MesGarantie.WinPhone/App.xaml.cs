@@ -20,7 +20,19 @@ namespace MesGaranties.WinPhone
         /// <returns>Frame racine de l'application téléphonique.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
-        public ApiData ApiData { get; set; }
+        public static ApiData ApiData
+        {
+            get
+            {
+                if (_apiData == null)
+                {
+                    _apiData = ApiData.Load();
+                }
+                return _apiData;
+            }
+            set { _apiData = value; }
+        }
+
         /// <summary>
         /// Constructeur pour l'objet Application.
         /// </summary>
@@ -113,6 +125,7 @@ namespace MesGaranties.WinPhone
 
         // Éviter l'initialisation double
         private bool phoneApplicationInitialized = false;
+        private static ApiData _apiData;
 
         // Ne pas ajouter de code supplémentaire à cette méthode
         private void InitializePhoneApplication()
