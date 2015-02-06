@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
 using DansTesComs.Ressources.User;
+using LucasHelpers.StringHelper;
 
 namespace MesGaranties.Core.Models
 {
@@ -17,17 +18,7 @@ namespace MesGaranties.Core.Models
 
         public string GetGravatarLink(int size =40)
         {
-            //on transforme le mail en hash
-            var h = MD5.Create();
-            byte[] data = h.ComputeHash(Encoding.UTF8.GetBytes(this.Mail));
-            StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            const string defaultUrl = "https://m1.behance.net/rendition/modules/79984489/disp/361c94db5ab26c0584806ea0a5e14807.png";
-            return string.Format("http://www.gravatar.com/avatar.php?gravatar_id={0}&default={1}&s={2}", sBuilder, defaultUrl, size);
+            return Mail.MailToGravatar(40);
         }
     }
 

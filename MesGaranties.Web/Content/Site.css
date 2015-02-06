@@ -131,7 +131,7 @@ footer {
     margin-right: 0;
     margin-top: 25px;
     padding-left: 18px;
-    border-bottom: solid 2px #3FD0C3;
+    border-bottom: solid 2px #27ae60;
 }
 
 #rightMenu h4 {
@@ -143,6 +143,7 @@ footer {
     margin: 0;
     padding: 0;
     margin-bottom: 50px;
+    padding-bottom: 30px;
     background-color: #fff;
 }
 
@@ -162,7 +163,7 @@ footer {
 }
 
 .pseudo {
-    color: #3fd0c3;
+    color: #27ae60;
     text-decoration: underline;
 }
 
@@ -184,7 +185,7 @@ h1 {
     margin-left: 15px;
     margin-top: 15px;
     padding-left: 5px;
-    border-bottom: solid 2px #3FD0C3;
+    border-bottom: solid 2px #27ae60;
 }
 
 h3 {
@@ -196,7 +197,7 @@ a {
 }
 
     a:hover, h3 a:active {
-        color: #16C7B7;
+        color: #27ae60;
     }
 
 /*style overide formulaire*/
@@ -252,7 +253,7 @@ input, textarea, .form-control, .btn {
 
 .garantie > .text {
     background-color: #000000;
-    background-color: rgba(0, 0, 0, 0.46);
+    background-color: rgba(0, 0, 0, 0.30);
     color: #fff;
     position: absolute;
     bottom: 0;
@@ -261,7 +262,7 @@ input, textarea, .form-control, .btn {
     padding: 4px;
 }
 .garantie > .remove {
-    color: rgb(255, 255, 255);
+    color: #d35400;
     top: 0;
     right: 0;
     position: absolute;
@@ -273,10 +274,16 @@ input, textarea, .form-control, .btn {
     text-align: center;
 }
 .sousGarantie {
-    border: 2px solid #5cb85c;
+    border: 2px solid #3498db;
 }
 
 .garantieExpire {
-    border: 2px solid #f14a10;
+    border: 2px solid #e74c3c;
     
+}
+.menu-search {
+    margin-top: 20px;
+}
+.menu-search input[type=text] {
+    width: 300px;
 }

@@ -24,7 +24,9 @@ namespace MesGaranties.WebSite
             bundles.Add(new ScriptBundle("~/bundles/com/add").Include(
                  "~/Scripts/Commentaire.js"
                 ));
-
+            bundles.Add(new StyleBundle("~/bundles/Parralax").Include(
+                 "~/Content/Parralax.css"
+                ));
             bundles.Add(new ScriptBundle("~/bundles/ajaxJsResponse").Include(
                  "~/Scripts/AjaxResponseFunction.js"
                 ));

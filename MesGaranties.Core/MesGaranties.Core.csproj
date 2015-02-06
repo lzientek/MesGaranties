@@ -94,6 +94,10 @@
       <Project>{AF036A44-4B1F-4FFF-81CB-00CED0A9348E}</Project>
       <Name>DansTesComs.Ressources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\LucasHelpers\LucasHelpers\LucasHelpers.csproj">
+      <Project>{D776AA80-E6DD-49A9-AE18-2AA557FB521B}</Project>
+      <Name>LucasHelpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MesGaranties.DAL\MesGaranties.DAL.csproj">
       <Project>{af61e87d-0761-44f2-b4be-3c51ad7b388e}</Project>
       <Name>MesGaranties.DAL</Name>

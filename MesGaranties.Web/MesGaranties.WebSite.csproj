@@ -222,6 +222,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Parralax.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -284,6 +285,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Images\bg\achat.jpg" />
+    <Content Include="Images\bg\phone.png" />
     <Content Include="Images\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -297,14 +300,6 @@
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\serverloc.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Images\user\UserProfile0.png" />
-    <Content Include="Images\user\UserProfile1.png" />
-    <Content Include="Images\user\UserProfile2.png" />
-    <Content Include="Images\user\UserProfile3.png" />
-    <Content Include="Images\user\UserProfile4.png" />
-    <Content Include="Images\user\UserProfile5.png" />
-    <Content Include="Images\user\UserProfile6.png" />
-    <Content Include="Images\user\UserProfile7.png" />
     <Content Include="Scripts\AjaxResponseFunction.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -343,7 +338,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -364,6 +358,7 @@
     <Content Include="Views\Garanties\Edit.cshtml" />
     <Content Include="Views\Garanties\Index.cshtml" />
     <Content Include="Views\Garanties\GarantieSmallPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

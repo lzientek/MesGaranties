@@ -1,20 +1,18 @@
-﻿@if (Request.IsAuthenticated)
+﻿@using LucasHelpers.StringHelper
+@if (Request.IsAuthenticated)
 {
     <span>
+        <img class="pull-left" src="@WebSecurity.CurrentUserName.MailToGravatar(40)" height="40" style="margin-top: -10px" />
+        
         <span class="pull-left">
-            Bonjour, @Html.ActionLink(User.Identity.Name, "Edit", "User", null, new { @class = "username", title = "Gérer" }) |&nbsp;
+            @Html.ActionLink(User.Identity.Name, "Edit", "User", null, new { @class = "username", title = "Gérer" }) |&nbsp;
         </span>
         @using (Html.BeginForm("Deconnexion", "User", FormMethod.Post, new { id = "logoutForm", @class = "pull-left" }))
         {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()"> @GeneralRessources.Deconnecter</a>
         }
-        @if (User.IsInRole("Admin"))
-        {
-            
-            <text>&nbsp;|&nbsp;</text>
-            
-        }
+
     </span>
 }
 else

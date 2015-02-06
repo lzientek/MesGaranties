@@ -15,7 +15,7 @@ namespace MesGaranties.Core.Models
     
     public partial class MesGarantiesEntities : DbContext
     {
-        public MesGarantiesEntities()
+        public  MesGarantiesEntities()
             : base("name=MesGarantiesEntities")
         {
         }

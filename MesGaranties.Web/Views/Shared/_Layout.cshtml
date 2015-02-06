@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Dans tes coms</title>
+    <title>Mes Garanties - @ViewBag.Title</title>
     <meta name="description" content="@ViewBag.description" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
@@ -20,17 +20,32 @@
     <header class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-                    <p><a href="@Url.Action("Index", "Home")" class="logo"><img height="70" width="180" src="~/Images/logo.png" alt="" /></a></p>
+                <div class="col-md-4">
+                    <p>
+                        <a href="@{
+                                     if (WebSecurity.IsAuthenticated)
+                                     {
+                                         @Url.Action("Index", "Garanties")
+                                     }
+                                     else
+                                     {
+                                         @Url.Action("Index", "Home")
+                                     }
+                                 }" class=
+                                     "logo"><img height="70" width="300" src="~/Images/logo.png" alt="" /></a>
+                    </p>
                 </div>
-                <div class="col-md-6">
-                    <ul id="menu" class="nav navbar-nav">
+                <div class="col-md-5">
+                    @if (WebSecurity.IsAuthenticated)
+                    {
+                        <form class="form-inline menu-search">
+                            <div class="form-group">
 
-                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                        <li class="divider"><a>|</a></li>
-
-                        <li>@Html.ActionLink("Garanties", "Index", "Garanties")</li>
-                    </ul>
+                                <input type="text" class="form-control" placeholder="Chercher une garantie">
+                            </div>
+                            <button type="submit" class="btn">Rechercher</button>
+                        </form>
+                    }
                 </div>
                 <div class="col-md-3">
                     <section class="row" id="login">
@@ -46,9 +61,9 @@
     <div id="body">
         <section class="container ">
             <div class="backgroundWhite row">
-        @RenderBody()
+                @RenderBody()
             </div>
-            
+
 
         </section>
     </div>
