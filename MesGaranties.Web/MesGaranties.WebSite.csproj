@@ -360,6 +360,7 @@
     <Content Include="Views\Garanties\GarantieSmallPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Garanties\Search.cshtml" />
+    <Content Include="Views\Garanties\GarantieDetailPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

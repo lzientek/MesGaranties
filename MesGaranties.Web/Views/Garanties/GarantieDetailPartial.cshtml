@@ -1,0 +1,55 @@
+﻿@using LucasHelpers.DateTimeHelpers
+@model MesGaranties.Core.Models.Garantie
+
+
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @if (Model.FinDeGarantie < DateTime.Today)
+            {
+                <span class="text-danger">Garantie expiré.</span>
+            }
+            else
+            {
+
+                <span class="text-success">Toujours sous garantie.</span>
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FinDeGarantie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinDeGarantie)
+            @if (Model.FinDeGarantie > DateTime.Today)
+            {
+                <text>encore</text>
+                @Model.FinDeGarantie.ToNumberOfDays();
+                <text> jours.</text>
+            }
+        </dd>
+        @if (!string.IsNullOrEmpty(Model.Commentaire))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Commentaire)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Commentaire)
+            </dd>
+        }
+
+    </dl>
+
+    @if (!string.IsNullOrEmpty(Model.PhotoTicketDeCaisse))
+    {
+        <p><a target="_blank" href="@Model.PhotoTicketDeCaisse">@Html.DisplayNameFor(model => model.PhotoTicketDeCaisse)</a></p>
+    }
+    @if (!string.IsNullOrEmpty(Model.PhotoFicherAnnexe))
+    {
+        <p><a target="_blank" href="@Model.PhotoFicherAnnexe">@Html.DisplayNameFor(model => model.PhotoFicherAnnexe)</a></p>
+    }

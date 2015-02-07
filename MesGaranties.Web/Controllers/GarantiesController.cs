@@ -17,14 +17,14 @@ namespace MesGaranties.WebSite.Controllers
         // ReSharper disable once InconsistentNaming
         private readonly MesGarantiesEntities db = new MesGarantiesEntities();
 
-        // GET: Garanties
+        [Authorize]
         public ActionResult Index()
         {
             var garanties = db.Garanties.Where(g => g.UserId == WebSecurity.CurrentUserId);
             return View(garanties.ToList());
         }
 
-
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,6 +43,7 @@ namespace MesGaranties.WebSite.Controllers
             return View(garantie);
         }
 
+        [Authorize]
         // GET: Garanties/Create
         public ActionResult Create()
         {
@@ -51,6 +52,7 @@ namespace MesGaranties.WebSite.Controllers
 
         // POST: Garanties/Create
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,Commentaire,FinDeGarantie")] Garantie garantie)
         {
@@ -110,6 +112,7 @@ namespace MesGaranties.WebSite.Controllers
             return string.Empty;
         }
 
+        [Authorize]        
         // GET: Garanties/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -131,6 +134,7 @@ namespace MesGaranties.WebSite.Controllers
 
         // POST: Garanties/Edit/5
         [HttpPost]
+        [Authorize]        
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Commentaire,FinDeGarantie")] Garantie garantie)
         {
@@ -167,6 +171,7 @@ namespace MesGaranties.WebSite.Controllers
             return View(garantie);
         }
 
+        [Authorize]
         // GET: Garanties/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -188,6 +193,7 @@ namespace MesGaranties.WebSite.Controllers
 
         // POST: Garanties/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]        
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -202,6 +208,7 @@ namespace MesGaranties.WebSite.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("Garanties/Search")]
         public ActionResult Search(string search)
         {

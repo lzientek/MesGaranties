@@ -4,93 +4,21 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h1>@Model.Name</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Etes vous sur de vouloir supprimer @Model.Name? </h3>
 <div>
-    <h4>Garantie</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+   @Html.Partial("GarantieDetailPartial", Model)
+    
+    <div class=" menu-bouton col-md-12">
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModificationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModificationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhotoProduit)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhotoProduit)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhotoTicketDeCaisse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhotoTicketDeCaisse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhotoFicherAnnexe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhotoFicherAnnexe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Commentaire)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Commentaire)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FinDeGarantie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FinDeGarantie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Mail)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
     }
-</div>
+        <form action="@Url.Action("Index","Garanties")" method="GET">
+            <input type="submit" value="Retour a la liste" class="btn btn-success" />
+        </form>
+        </div>
+    </div>
