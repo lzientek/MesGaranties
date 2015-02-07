@@ -1,5 +1,5 @@
 ﻿@using LucasHelpers.StringHelper
-@model MesGaranties.Core.Models.Garantie
+@model Garantie
 
 <div class="col-md-3 garantie @Model.Status" 
      onclick="document.location = '@Url.Action("Details",new{id = Model.Id})'" 

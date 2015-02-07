@@ -7,7 +7,9 @@
 <h1>Mes garanties</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <form action="@Url.Action("Create","Garanties")" method="GET" style="margin: 20px;" >
+    <input class="btn btn-success" type="submit" value="Ajouter une garantie" />
+    </form>
 </p>
 
 

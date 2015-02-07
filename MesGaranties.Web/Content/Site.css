@@ -18,6 +18,10 @@ p {
     background: #efefef;
     outline: none;
 }
+.btn-success:hover {
+    background: #449d44;
+    outline: none;
+}
 
 .btn:active, .btn:focus, .btn:active:focus {
     outline: none;
@@ -286,4 +290,32 @@ input, textarea, .form-control, .btn {
 }
 .menu-search input[type=text] {
     width: 300px;
+}
+.btn-success {
+    background-color: #27ae60 !important;
+    background-image: none;
+    border: none;
+}
+.btn-warning {
+    background-color: #e67e22 !important;
+    background-image: none;
+    border: none;
+    
+}
+.btn-danger {
+    background-color: #e74c3c !important;
+    background-image: none;
+    border: none;
+    
+}
+.menu-bouton form {
+    float: left;
+}
+.menu-bouton form .btn{
+    margin: 1px;
+}
+.menu-bouton {
+    margin-top: 20px;
+    
+    margin-left: 15px;
 }
