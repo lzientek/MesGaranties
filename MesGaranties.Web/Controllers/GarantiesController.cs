@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Net;
+
 using System.Web.Mvc;
 using DansTesComs.WebSite.Filters;
+using LucasHelpers.StringHelpers;
 using MesGaranties.Core.Models;
 using WebMatrix.WebData;
 
@@ -91,7 +94,7 @@ namespace MesGaranties.WebSite.Controllers
         {
             if (Request.Files[fileName].ContentLength > 0)
             {
-                string extension = System.IO.Path.GetExtension(Request.Files[fileName].FileName);
+                string extension = Path.GetExtension(Request.Files[fileName].FileName);
                 if (validExtension.Length != 0 && !validExtension.Contains(extension))
                 {
                     throw new BadImageFormatException(string.Format("Extension du fichier non valide. ({0})", string.Join(", ", validExtension)), fileName);
@@ -196,6 +199,22 @@ namespace MesGaranties.WebSite.Controllers
             db.Garanties.Remove(garantie);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("Garanties/Search")]
+        public ActionResult Search(string search)
+        {
+            if (string.IsNullOrWhiteSpace(search)) { return RedirectToAction("Index", "Garanties"); }
+            var split = search.Split(' ');
+            ViewBag.Search = search;
+            var garanties =
+                db.Garanties.Where(
+                    g => g.Name.Contains(search)
+                        || search.Contains(g.Name)
+                        || g.Commentaire.Contains(search)
+                        || split.Contains(g.Name)).ToList();
+            return View(garanties);
         }
 
         protected override void Dispose(bool disposing)

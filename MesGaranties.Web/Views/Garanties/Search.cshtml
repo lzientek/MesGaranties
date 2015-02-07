@@ -1,0 +1,21 @@
+﻿@model List<Garantie>
+
+@{
+    ViewBag.Title = "Recherche";
+}
+
+<h1>Recherche</h1>
+<p>@Model.Count résultats pour @ViewBag.Search</p>
+@foreach (var garantie in Model)
+{
+    @Html.Partial("GarantieSmallPartial", garantie)
+}
+<p>
+    <form action="@Url.Action("Create","Garanties")" method="GET" style="margin: 20px;">
+        <input class="btn btn-success" type="submit" value="Ajouter une garantie" />
+    </form>
+</p>
+
+
+
+

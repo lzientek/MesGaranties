@@ -38,10 +38,10 @@
                 <div class="col-md-5">
                     @if (WebSecurity.IsAuthenticated)
                     {
-                        <form class="form-inline menu-search">
+                        <form class="form-inline menu-search" method="GET" action="@Url.Action("Search","Garanties")">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" placeholder="Chercher une garantie">
+                                <input type="text" name="search" class="form-control" value="@ViewBag.Search" placeholder="Chercher une garantie">
                             </div>
                             <button type="submit" class="btn btn-success">Rechercher</button>
                         </form>
