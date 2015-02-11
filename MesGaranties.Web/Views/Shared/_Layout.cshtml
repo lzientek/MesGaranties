@@ -9,12 +9,19 @@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jqueryval")
 
     @RenderSection("scripts", false)
     @Scripts.Render("~/bundles/ajaxJsResponse")
+    <script type="text/javascript">
+        $(function() {
+            $("#FinDeGarantie").datepicker({dateFormat: "dd/mm/yy"});
+        })
+    </script>
 </head>
 <body>
     <header class="navbar navbar-default navbar-static-top">
@@ -31,8 +38,7 @@
                                      {
                                          @Url.Action("Index", "Home")
                                      }
-                                 }" class=
-                                     "logo"><img height="70" width="300" src="~/Images/logo.png" alt="" /></a>
+                                 }" class="logo"><img height="70" width="300" src="~/Images/logo.png" alt="" /></a>
                     </p>
                 </div>
                 <div class="col-md-5">

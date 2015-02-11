@@ -134,6 +134,15 @@ namespace MesGaranties.Api.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("test")]
+        [ResponseType(typeof (void))]
+        public IHttpActionResult Test()
+        {
+            return Ok(new {Cucou = "ok"});
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
