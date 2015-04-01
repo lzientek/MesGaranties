@@ -1,0 +1,24 @@
+﻿@model MesGaranties.Core.Models.Garantie
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1>@Model.Name</h1>
+
+<h3>Etes vous sur de vouloir supprimer @Model.Name? </h3>
+<div>
+    <hr />
+   @Html.Partial("GarantieDetailPartial", Model)
+    
+    <div class=" menu-bouton col-md-12">
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+    }
+        <form action="@Url.Action("Index","Garanties")" method="GET">
+            <input type="submit" value="Retour a la liste" class="btn btn-success" />
+        </form>
+        </div>
+    </div>

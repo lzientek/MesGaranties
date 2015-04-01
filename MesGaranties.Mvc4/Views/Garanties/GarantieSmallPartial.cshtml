@@ -1,0 +1,15 @@
+﻿@using LucasHelpers.StringHelper
+@model MesGaranties.Core.Models.Garantie
+
+<div class="col-md-3 garantie @Model.Status" 
+     onclick="document.location = '@Url.Action("Details",new{id = Model.Id})'" 
+     style="background-image: url(@Model.PhotoProduit?d=@Model.LastModificationDate.Second)">
+    <div class="text">
+        <h4>@Model.Name</h4>
+        <p>@Model.Commentaire.MaxLength(100,"...")</p>
+    </div>
+    <div class="remove">
+        @Html.ActionLink("X", "Delete", new { id = Model.Id }, new { title = "Supprimer" })
+    </div>
+</div>
+

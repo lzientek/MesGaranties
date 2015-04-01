@@ -1,0 +1,321 @@
+﻿html {
+    background-color: #efefef;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #efefef;
+}
+
+p {
+    margin-left: 15px;
+}
+
+.btn:hover {
+    background: #efefef;
+    outline: none;
+}
+.btn-success:hover {
+    background: #449d44;
+    outline: none;
+}
+
+.btn:active, .btn:focus, .btn:active:focus {
+    outline: none;
+}
+
+.petitChampNiveau {
+    width: 50px;
+    float: left;
+}
+
+.selectedNote {
+    color: #ffa500;
+}
+
+.comment-block {
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+textarea.commentaire-textarea {
+    height: 54px;
+}
+
+#login {
+    padding-top: 30px;
+    color: #777;
+}
+
+.borderCom:hover {
+    background-color: #fbfbfb;
+}
+
+.comment-block h4 {
+    font-weight: lighter;
+    padding-left: 5px;
+}
+/* Perso
+    -------------------------------------------------------*/
+
+.glyphicon-search {
+    margin-left: 3px;
+    margin-top: 2px;
+}
+
+.btn-search {
+    padding-left: 0;
+    padding-bottom: 4px;
+    padding-right: 0;
+}
+
+.navbar-static-top {
+    background-image: none;
+    background-color: #ffffff;
+}
+
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #555;
+    color: #fff;
+    -webkit-box-shadow: 0px -1px 9px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px -1px 9px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px -1px 9px 0px rgba(50, 50, 50, 0.75);
+}
+
+    footer .separator {
+        color: #333;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    footer a, footer a:visited {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        footer a:hover, footer a:focus, #addOneMoreComment {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+
+
+    footer p {
+        margin-top: 6px;
+    }
+
+.noteComExterneDetails {
+    margin-left: 20px;
+}
+
+.horizontal-separator, .comment-block h4 {
+    border-bottom: 1px #e2e2e2 solid;
+}
+
+.horizontal-separator {
+    margin-bottom: 16px;
+}
+
+
+.pageList {
+    text-align: center;
+}
+
+#rightMenu h3, #rightMenu h4 {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 25px;
+    padding-left: 18px;
+    border-bottom: solid 2px #27ae60;
+}
+
+#rightMenu h4 {
+    padding-left: 10px;
+    margin-left: 15px;
+}
+
+.backgroundWhite {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    background-color: #fff;
+}
+
+#theContainer .row, #rightMenu .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.footerComment {
+    /*border-color:  #3fd0c3;
+    border-color:  rgba(63, 208, 195, 1);*/
+    border-color: #e4e4e4;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    padding-top: 5px;
+}
+
+.pseudo {
+    color: #27ae60;
+    text-decoration: underline;
+}
+
+.commentaire-publication {
+    margin-left: 30px;
+    font-size: 16px;
+}
+
+/*title*/
+h1, h2 {
+    color: #838383;
+}
+
+h3 {
+    color: #676767;
+}
+
+h1 {
+    margin-left: 15px;
+    margin-top: 15px;
+    padding-left: 5px;
+    border-bottom: solid 2px #27ae60;
+}
+
+h3 {
+    margin-left: 15px;
+}
+
+a {
+    color: inherit;
+}
+
+    a:hover, h3 a:active {
+        color: #27ae60;
+    }
+
+/*style overide formulaire*/
+input, textarea, .form-control, .btn {
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+
+.form-horizontal {
+    margin-top: 30px;
+}
+
+#menu {
+    text-align: center;
+    margin-top: 15px;
+}
+/*responsive design*/
+@media (max-width: 750px) {
+    .divider {
+        display: none !important;
+    }
+
+    footer .separator {
+        display: none !important;
+    }
+
+    .hide-litle-screen {
+        display: none !important;
+    }
+}
+
+.garantie {
+    height: 200px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    margin: 10px;
+    background-repeat: no-repeat;
+    -moz-background-position-x: center;
+    -o-background-position-x: center;
+    background-position-x: center;
+    -moz-background-position-y: center;
+    -o-background-position-y: center;
+    background-position-y: center;
+    -ms-background-clip: content-box;
+    -moz-background-clip: content-box;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
+    -ms-background-size: cover;
+    background-size: cover;
+    padding: 0;
+}
+
+.garantie > .text {
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.30);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 4px;
+}
+.garantie > .remove {
+    color: #d35400;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.garantie >img {
+    height: 200px;
+    text-align: center;
+}
+.sousGarantie {
+    border: 2px solid #3498db;
+}
+
+.garantieExpire {
+    border: 2px solid #e74c3c;
+    
+}
+.menu-search {
+    margin-top: 20px;
+}
+.menu-search input[type=text] {
+    width: 300px;
+}
+.btn-success {
+    background-color: #27ae60 !important;
+    background-image: none;
+    border: none;
+}
+.btn-warning {
+    background-color: #e67e22 !important;
+    background-image: none;
+    border: none;
+    
+}
+.btn-danger {
+    background-color: #e74c3c !important;
+    background-image: none;
+    border: none;
+    
+}
+.menu-bouton form {
+    float: left;
+}
+.menu-bouton form .btn{
+    margin: 1px;
+}
+.menu-bouton {
+    margin-top: 20px;
+    
+    margin-left: 15px;
+}

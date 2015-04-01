@@ -1,0 +1,39 @@
+﻿@using System.Text
+@using LucasHelpers.DateTimeHelpers
+@model MesGaranties.Core.Models.Garantie
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+
+<div class="row">
+    @if (!string.IsNullOrEmpty(Model.PhotoProduit))
+    {
+        <div class="col-md-offset-1 col-md-5">
+            <img class="col-md-12" src="@Model.PhotoProduit" />
+        </div>
+    }
+    <div class="col-md-6">
+
+        @Html.Partial("GarantieDetailPartial", Model)
+
+
+        <div class=" menu-bouton col-md-12">
+            <form action="@Url.Action("Index","Garanties")" method="GET">
+                <input type="submit" value="Retour a la liste" class="btn btn-success" />
+            </form>
+            <form action="@Url.Action("Edit","Garanties",new{id=Model.Id})" method="GET">
+                <input type="submit" value="Modifier" class="btn btn-warning" />
+            </form>
+            <form action="@Url.Action("Delete","Garanties",new{id=Model.Id})" method="GET">
+                <input type="submit" value="Supprimer" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
